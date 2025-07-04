@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: newtiger
+      MYSQL_DATABASE: text2sql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./data:/docker-entrypoint-initdb.d
+    networks:
+      - net
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: always
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama_models:/root/.ollama
+    entrypoint: ["/bin/sh", "-c", "update-ca-certificates && ollama serve & sleep 5 && ollama pull mistral && tail -f /dev/null"]
+    networks:
+      - net
+
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    volumes:
+      - index_data:/chroma/.chroma/index
+    environment:
+      - IS_PERSISTENT=TRUE
+    ports:
+      - 8000:8000
+    networks:
+      - net
+
+volumes:
+  index_data:
+    driver: local
+  backups:
+    driver: local
+  ollama_models:
+
+networks:
+  net:
+    driver: bridge
