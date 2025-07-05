@@ -14,6 +14,21 @@ services:
     networks:
       - net
 
+  user_interface:
+    build:
+      context: ./user_interface/
+      dockerfile: ./Dockerfile
+    container_name: user_interface
+    restart: always
+    ports:
+      - 8600:8600
+    depends_on:
+      - backend
+    volumes:
+      - /app/text2sql/user_interface:/app/text2sql/user_interface
+    networks:
+      - net
+
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -25,6 +40,21 @@ services:
     entrypoint: ["/bin/sh", "-c", "update-ca-certificates && ollama serve & sleep 5 && ollama pull mistral && tail -f /dev/null"]
     networks:
       - net
+
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: ./Dockerfile
+    image: backend
+    container_name: backend
+    ports:
+      - 5000:5000
+    depends_on:
+      - chroma
+    volumes:
+      - /app/text2sql/backend:/app/text2sql/backend
+    networks:
+      - net  
 
   chroma:
     image: ghcr.io/chroma-core/chroma:latest

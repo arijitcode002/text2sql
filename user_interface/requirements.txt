@@ -1,0 +1,7 @@
+mysqlclient
+altair
+pandas
+streamlit
+SQLAlchemy==2.0.41
+matplotlib
+httpx

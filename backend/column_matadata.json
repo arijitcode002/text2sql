@@ -1,0 +1,254 @@
+[
+  {
+    "tableName": "BatchRuns",
+    "columnName": "BatchId",
+    "columnDescription": "Unique identifier for each batch run.",
+    "columnDefinition": "INT AUTO_INCREMENT PRIMARY KEY"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "BatchDate",
+    "columnDescription": "The date when the batch process was initiated.",
+    "columnDefinition": "DATE NOT NULL"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "Status",
+    "columnDescription": "The current status of the batch run (Pending, Completed, Failed).",
+    "columnDefinition": "ENUM('Pending', 'Completed', 'Failed') NOT NULL"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "RecordsProcessed",
+    "columnDescription": "The number of records processed in the batch run.",
+    "columnDefinition": "INT"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "StartedAt",
+    "columnDescription": "Timestamp when the batch process started.",
+    "columnDefinition": "DATETIME"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "EndedAt",
+    "columnDescription": "Timestamp when the batch process ended.",
+    "columnDefinition": "DATETIME"
+  },
+  {
+    "tableName": "BatchRuns",
+    "columnName": "Notes",
+    "columnDescription": "Optional notes or comments related to the batch run.",
+    "columnDefinition": "TEXT"
+  },
+  {
+      "tableName": "Customers",
+      "columnName": "CustomerId",
+      "columnDescription": "Unique identifier for each customer.",
+      "columnDefinition": "INT AUTO_INCREMENT PRIMARY KEY"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "CustomerName",
+      "columnDescription": "Name of the customer.",
+      "columnDefinition": "VARCHAR(100) NOT NULL"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "Email",
+      "columnDescription": "Email address of the customer. This is unique.",
+      "columnDefinition": "VARCHAR(100) UNIQUE"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "PhoneNumber",
+      "columnDescription": "Phone number of the customer.",
+      "columnDefinition": "VARCHAR(20)"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "DateOfBirth",
+      "columnDescription": "Birthdate of the customer.",
+      "columnDefinition": "DATE"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "BatchId",
+      "columnDescription": "References the BatchId in the BatchRuns table for batch processing.",
+      "columnDefinition": "INT"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "BatchStatus",
+      "columnDescription": "Status of the batch processing for the customer record.",
+      "columnDefinition": "ENUM('Pending', 'Processed', 'Failed', 'Excluded') DEFAULT 'Pending'"
+    },
+    {
+      "tableName": "Customers",
+      "columnName": "ExternalSyncTimestamp",
+      "columnDescription": "Timestamp for when the customer data was last synced externally.",
+      "columnDefinition": "DATETIME"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "AccountId",
+      "columnDescription": "Unique identifier for each account.",
+      "columnDefinition": "INT AUTO_INCREMENT PRIMARY KEY"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "AccountNumber",
+      "columnDescription": "Unique account number.",
+      "columnDefinition": "VARCHAR(20) NOT NULL UNIQUE"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "CustomerId",
+      "columnDescription": "References the CustomerId from the Customers table.",
+      "columnDefinition": "INT NOT NULL"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "AccountType",
+      "columnDescription": "Type of account (Savings, Checking, Loan).",
+      "columnDefinition": "ENUM('Savings', 'Checking', 'Loan') NOT NULL"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "OpeningDate",
+      "columnDescription": "Date when the account was opened.",
+      "columnDefinition": "DATE NOT NULL"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "CurrentBalance",
+      "columnDescription": "Current balance in the account.",
+      "columnDefinition": "DECIMAL(15, 2) NOT NULL"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "BatchId",
+      "columnDescription": "References the BatchId in the BatchRuns table for batch processing.",
+      "columnDefinition": "INT"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "BatchStatus",
+      "columnDescription": "Status of the batch processing for the account record.",
+      "columnDefinition": "ENUM('Pending', 'Processed', 'Failed', 'Excluded') DEFAULT 'Pending'"
+    },
+    {
+      "tableName": "Accounts",
+      "columnName": "ExternalSyncTimestamp",
+      "columnDescription": "Timestamp for when the account data was last synced externally.",
+      "columnDefinition": "DATETIME"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "AddressId",
+      "columnDescription": "Unique identifier for each address.",
+      "columnDefinition": "INT AUTO_INCREMENT PRIMARY KEY"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "CustomerId",
+      "columnDescription": "References the CustomerId from the Customers table.",
+      "columnDefinition": "INT NOT NULL"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "AddressLine1",
+      "columnDescription": "Primary address line (e.g., street address).",
+      "columnDefinition": "VARCHAR(255) NOT NULL"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "AddressLine2",
+      "columnDescription": "Secondary address line (e.g., apartment number).",
+      "columnDefinition": "VARCHAR(255)"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "City",
+      "columnDescription": "City of the address.",
+      "columnDefinition": "VARCHAR(100)"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "State",
+      "columnDescription": "State or province of the address.",
+      "columnDefinition": "VARCHAR(100)"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "PostalCode",
+      "columnDescription": "Postal code of the address.",
+      "columnDefinition": "VARCHAR(20)"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "Country",
+      "columnDescription": "Country of the address.",
+      "columnDefinition": "VARCHAR(100)"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "AddressType",
+      "columnDescription": "Type of address (Home, Work, Billing, Shipping).",
+      "columnDefinition": "ENUM('Home', 'Work', 'Billing', 'Shipping') NOT NULL"
+    },
+    {
+      "tableName": "CustomerAddresses",
+      "columnName": "BatchId",
+      "columnDescription": "References the BatchId in the BatchRuns table for batch processing.",
+      "columnDefinition": "INT"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "TransactionId",
+      "columnDescription": "Unique identifier for each transaction.",
+      "columnDefinition": "INT AUTO_INCREMENT PRIMARY KEY"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "AccountId",
+      "columnDescription": "References the AccountId from the Accounts table.",
+      "columnDefinition": "INT NOT NULL"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "Date",
+      "columnDescription": "Date of the transaction.",
+      "columnDefinition": "DATE NOT NULL"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "Amount",
+      "columnDescription": "Amount involved in the transaction.",
+      "columnDefinition": "DECIMAL(15, 2) NOT NULL"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "LoanBalance",
+      "columnDescription": "Outstanding loan balance at the time of the transaction (if applicable).",
+      "columnDefinition": "DECIMAL(15, 2)"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "BatchId",
+      "columnDescription": "References the BatchId in the BatchRuns table for batch processing.",
+      "columnDefinition": "INT"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "BatchStatus",
+      "columnDescription": "Status of the batch processing for the transaction record.",
+      "columnDefinition": "ENUM('Pending', 'Processed', 'Failed', 'Excluded') DEFAULT 'Pending'"
+    },
+    {
+      "tableName": "Transactions",
+      "columnName": "ExternalSyncTimestamp",
+      "columnDescription": "Timestamp for when the transaction data was last synced externally.",
+      "columnDefinition": "DATETIME"
+    }
+]

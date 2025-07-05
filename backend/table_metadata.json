@@ -1,0 +1,24 @@
+{
+	"tableMatadata": [
+		{
+			"tableName": "BatchRuns",
+			"description": "Tracks metadata about each batch process, including date, status, record count, start/end time, and optional notes."
+		},
+		{
+			"tableName": "Customers",
+			"description": "Stores customer details like name, contact info, birth date, batch reference, processing status, and external syne timestamp."
+		},
+		{
+			"tableName": "Accounts",
+			"description": "Contains financial account details per customer, including type, balance, opening date, processing batch, and sync status."
+		},
+		{
+			"tableName": "CustomerAddresses",
+			"description": "Holds customer address records, categorized by type (home, work, billing, shipping), and linked to batches."
+		},
+		{
+			"tableName": "Transactions",
+			"description": "Records financial transactions for accounts, including date, amount, loan balance, and batch/sync tracking."
+		}
+	]
+}
