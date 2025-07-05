@@ -1,2 +1,3 @@
 # text2sql
-![image](https://github.com/user-attachments/assets/abb1ff20-5797-4ae6-aa4f-88be881940b0)
+![image](https://github.com/user-attachments/assets/bd604949-d08b-47ba-9d81-28ea9af7ae15)
+
